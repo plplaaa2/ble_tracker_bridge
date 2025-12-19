@@ -8,8 +8,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up BLE Tracker Bridge from a config entry."""
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = entry.data
-
-    # Forward the setup to the device_tracker platform
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
